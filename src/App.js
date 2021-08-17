@@ -1,13 +1,23 @@
 import React, {useState} from "react";
-import {Message} from "./components/Message";
-import "./styles/App.css"
+import "./App.css"
+import {MessageList} from "./components/MessageList/MessageList";
+import {MessageForm} from "./components/MessageForm/MessageForm";
+import {useAddMessage} from "./hooks/useAddMessage";
+import {useBotMessage} from "./hooks/useBotMessage";
 
 function App() {
-    const [text, /*setText*/] = useState('Привет, Мир!')
+    const [messages, setMessages] = useState([])
+
+    const user = "Вы"
+    const bot = "Бот"
+
+    const [message, setMessage, onSubmit] = useAddMessage(user, messages, setMessages)
+    useBotMessage(bot, user, messages, setMessages)
 
     return (
         <div className="App">
-            <Message msg={text}/>
+            <MessageList messages={messages}/>
+            <MessageForm onSubmit={onSubmit} message={message} setMessage={setMessage}/>
         </div>
     );
 }
