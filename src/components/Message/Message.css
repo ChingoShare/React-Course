@@ -1,0 +1,17 @@
+.msg {
+    display: flex;
+    align-items: center;
+}
+.msg-author {
+    min-width: 30px;
+    word-break: break-all;
+}
+.msg-text {
+    width: fit-content;
+    padding: 15px;
+    margin: 15px;
+    font-size: 1.5em;
+    border: 2px solid darkcyan;
+    text-align: center;
+    word-break: break-all;
+}
