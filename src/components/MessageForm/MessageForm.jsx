@@ -1,16 +1,22 @@
-import React from 'react';
-import {MyInput} from "../UI/input/MyInput";
-import {MyButton} from "../UI/button/MyButton";
+import {Button, Icon, TextField} from "@material-ui/core";
 
 const MessageForm = ({onSubmit, message, setMessage}) => {
     return (
         <form onSubmit={onSubmit}>
-            <MyInput
+            <TextField
+                inputRef={input => input?.focus()}
+                multiline
+                fullWidth
+                color="secondary"
                 value={message.text}
                 onChange={e => setMessage({...message, text: e.target.value})}
-                type="text"
-                placeholder="Сообщение"/>
-            <MyButton>Отправить</MyButton>
+                label="Сообщение..."
+                variant="outlined"
+                />
+
+            <Button type="submit" variant="contained" color="secondary" endIcon={<Icon>send</Icon>}>
+                Отправить
+            </Button>
         </form>
     );
 };

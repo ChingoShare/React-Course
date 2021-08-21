@@ -1,5 +1,7 @@
 import React from 'react';
 import "./Message.css"
+import {number, shape, string} from "prop-types";
+import {Chat} from "../Chat/Chat";
 
 const Message = ({message}) => {
 
@@ -9,6 +11,14 @@ const Message = ({message}) => {
             <p className={"msg-text"}>{message.text}</p>
         </div>
     );
-};
+}
+
+Chat.propTypes = {
+    chat: shape({
+        author: string.isRequired,
+        name: string.isRequired,
+        id: number.isRequired
+    }).isRequired
+}
 
 export {Message};
